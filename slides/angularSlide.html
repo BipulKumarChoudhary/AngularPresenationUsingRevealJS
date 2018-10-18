@@ -229,6 +229,80 @@
         </aside>
     </section>
 </section>
+
+<section>
+    <h2>Understanding Angular Component Hierarchy </h2>
+    <img class="fragment" src="/images/AngularHeirarchy.png" height="500" width="1500">
+    <aside class="notes">
+        Root Component is added first <br />
+        Angular router takes a look at URL and identifies I have a component that matches that route and loads that
+        component <br />
+        Components template is then loaded in the browser <br />
+        Components may then load some data from the server and give it to the template to be displayed <br />
+        Of course if this page is complex then it is composed of lots of smaller components and those components can
+        have other smaller components <br />
+        This ends up then creating a tree and now imagine when user navigates to another url within the application
+        then basically we start a new tree then the app components sees the new route and then loads the newer
+        corresponding component and all its sub component <br />
+    </aside>
+</section>
+<section>
+    <h2>Understanding Angular Module</h2>
+    <img class="fragment" src="/images/AngularModule.png" height="500" width="1500">
+    <aside class="notes">
+        As the application becomes bigger and bigger this could have become a lot of things to load into the memory.
+        This is where Angular Module Kicks in<br /><br />
+
+        Angular modules are meant to be containers that will group all of the routes, component trees, and there
+        corresponding bits of code that can be loaded independently with each other.
+        So when the user visits only Main Module the files of the corresponding section is only loaded and bowser will
+        load the other section of files when the other section is loaded.<br /><br />
+
+        One important high level concept regarding module is that how modules are used to make directives, components
+        and services available to your modules.<br />
+        Component ,Directive, Services and Pipes are created and registered in the module. With all of these they are
+        available in the module.<br /><br />
+
+        That’s true about all except services as Services are providers that gets registered in the root injector so
+        they are available across angular modules.<br />
+
+    </aside>
+</section>
+
+<section>
+    <h2>Interpolation, Expressions, Events, and Statements</h2>
+    <img class="fragment" src="/images/AngularInterpolation.png" height="500" width="1500">
+    <aside class="notes">
+        Interpolation and Property Bindings <br />
+        Expressions are used for binding<br />
+        Event bindings and statements<br />
+    </aside>
+</section>
+
+<section>
+    <h2>Expression Restrictions</h2>
+    <img class="fragment" src="/images/ExpressionRestrictions.png" height="500" width="1500">
+</section>
+
+<section>
+    <h2>Expression Recommendations</h2>
+    <img class="fragment" src="/images/ExpressionRecommendations.png" height="500" width="1500">
+    <aside class="notes">
+        Idempotent: Means the value doesnot changes <br />
+    </aside>
+</section>
+
+<section>
+    <h2>Statement Restrictions</h2>
+    <img class="fragment" src="/images/StatementRestrictions.png" height="500" width="1500">
+</section>
+
+
+<section>
+    <h2>Dependency injection</h2>
+    <img class="fragment" src="/images/DependencyInjection2.png" height="500" width="1500">
+</section>
+
 <section id="fragments" data-background-transition="zoom" data-transition="slide" data-background="#4d7e65">
     <h2>References</h2>
     <ul>
