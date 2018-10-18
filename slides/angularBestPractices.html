@@ -1,0 +1,401 @@
+<section>
+    <h2>File and Folder Structure</h2>
+    <div>LIFT</div>
+    <ul style="list-style: none;">
+        <li>L – Locate Code Quickly</li>
+        <li>I – Identify Code at a glance</li>
+        <li>F – Flattest structure possible</li>
+        <li>T – Try to be dry</li>
+    </ul>
+    <aside class="notes">
+        Try to be dry mean Try not to repeat code. Try to reuse code.<br />
+    </aside>
+</section>
+
+<section>
+    <h2>File and Folder Structure continued...</h2>
+    <img class="fragment" src="/images/FileFolderStructure.png" height="500" width="1500">
+    <aside class="notes">
+        For exercise: <br />
+        Ad the Git Repository for both solutions here.<br />
+        Use Angular Best Practices App for the Demo and go through the best practices one by one<br />
+        Observe the Register Component in both solutions.<br />
+        If there are than 8 files then consider creating subfolders<br />
+    </aside>
+</section>
+
+<section>
+    <h2>General Coding Best Practices</h2>
+    <ul>
+        <li>Single responsibility principle
+            <ul>
+                <li>Single class or module should have single responsibility</li>
+            </ul>
+        </li>
+        <li>Symbol Naming
+            <ul>
+                <li>Readable variable names, classes, properties etc.</li>
+                <li>File naming and symbol naming should be consistent(observe loading-spinner)</li>
+                <li>Classes should be named Pascal Case</li>
+                <li>Properties and methods lower camel case</li>
+                <li>Line spacing after Imports</li>
+                <li>Use lower camel case for naming constants</li>
+            </ul>
+        </li>
+    </ul>
+    <aside class="notes">
+        For Single responsibility principle Exercise – <br />
+        1. Create a new file “catalog-repository.service.ts” in catalog folder<br />
+        2. Move code from data-repository.service.ts<br />
+        3. Delete Users array User Specific functions (saveUser, enroll, drop, signIn) from new file<br />
+        4. Rename Class to CatalogRepositoryService<br />
+        5. Rename data-repository.service to user-repository.service and cleanup the code in the file as well<br />
+        6. Cleanup Code to user these services across the application<br />
+        7. Follow the application which is complete and compare it with application<br /> <br />
+        For Symbol Naming Exercise: <br />
+        1. Rename LoadingComponent to LoadingSpinnerComponent. Fix Code everywhere<br />
+        2. Use Visual Studio Code Rename using F2 to rename the constants<br />
+    </aside>
+</section>
+
+<section>
+    <h2>General Coding Best Practices Continued...</h2>
+    <ul>
+        <li>Preferring immutability
+            <ul>
+                <li>It basically means not mutating existing objects in memory rather create new objects</li>
+                <li>Best Practice not only in Angular but all JavaScript</li>
+                <li>Helps in avoiding bugs such as values unexpectedly changed</li>
+                <li>Identifies Change detection</li>
+                <li>Follow Exercise from Notes</li>
+            </ul>
+        </li>
+        <li>Using small functions
+            <ul>
+                <li>Break big functions in smaller reusable functions</li>
+            </ul>
+        </li>
+    </ul>
+    <aside class="notes">
+        For Preferring immutability Exercise – <br />
+        Observe enroll method in user-repository.service.ts. Observe the code this.currentUser.classes.push(classId);
+        <br />
+        Replace code with this.currentUser = Object.assign({}, this.currentUser, {classes:
+        this.currentUser.classes.concat([classId])}) <br />
+        Update Drop function as well. Replace this.currentUser.classes = this.currentUser.classes.filter(c => c.classId
+        !== classId); with this.currentUser = Object.assign({}, this.currentUser, { classes:
+        this.currentUser.classes.filter(c => c.classId !== classId) }) <br />
+        Replace the code in saveUser function. this.currentUser = user; Replace it with this.currentUser =
+        Object.assign({}, user, {classes:user.classe || []}); <br />
+    </aside>
+</section>
+
+<section>
+    <h2>Angular Module Organization</h2>
+    <img class="fragment" src="/images/AngularModuleOrganization.png" height="450" width="800">
+    <aside class="notes">
+        Lazy Loading <br />
+    </aside>
+</section>
+
+<section>
+    <h2>Recommended Modules</h2>
+    <img class="fragment" src="/images/RecommendedModules.png" height="500" width="1500">
+    <aside class="notes">
+        Exercise on the application<br />
+        Creation of Core Module: Candidates in Appllication is User-Repository.Service.ts and nav-bar.component.ts so
+        lets move these and lets create core module
+        Steps: <br />
+        - Create Core Folder under app folder. And move User-Repository.Service.ts in the core folder<br />
+        - Remove User-Repository.Service.ts from app.module.<br />
+        - Move nav-bar.component.ts, account-menu.component.ts, account-menu.component.css, nav-bar.component.css to
+        core folder<br />
+        - Fix references to User-Repository.Service.ts across application.<br />
+        - Create core.module.ts and add below code. For the core module we need to import common module below.<br /><br />
+        import { NgModule } from '@angular/core';<br />
+        import { UserRepositoryService } from './user-repository.service';<br />
+        import { CommonModule } from '@angular/common';<br />
+        import { RouterModule } from '@angular/router';<br />
+        import { NavBarComponent } from './nav-bar.component';<br />
+        import {AccountMenuComponent } from './account-menu.component';<br />
+        @NgModule({<br />
+        imports: [ CommonModule, RouterModule],<br />
+        exports: [ NavBarComponent,AccountMenuComponent ],<br />
+        declarations :[NavBarComponent,AccountMenuComponent ],<br />
+        providers :[ UserRepositoryService]<br />
+        })<br />
+        export class CoreModule{}<br /><br />
+        Add Core Module in app.module.ts and add it in imports.<br />
+        Shared Module : In the existing example feature modules , users and catalog will use shared component loading
+        spinner. Steps to be followed:<br />
+        Create Shared Folder and add shared.module.ts file in it<br />
+        Move Loading Spinner component in shared folder and delete the component directory as we don’t need this in
+        this solution<br />
+        Update below code for Shared Module<br />
+        import { NgModule } from '@angular/core';<br />
+        import { LoadingSpinnerComponent } from './loading-spinner.component';<br />
+        import { CommonModule } from '@angular/common';<br />
+        import { RouterModule } from '@angular/router';<br />
+        @NgModule({<br />
+        imports: [ CommonModule, RouterModule],<br />
+        exports: [ LoadingSpinnerComponent, CommonModule ],<br />
+        declarations :[LoadingSpinnerComponent ],<br />
+        providers :[ ]<br />
+        })<br />
+        export class SharedModule{<br />
+        }<br />
+        Cleanup App Module and add shared Module.<br /><br />
+        Feature Modules: We will create feature module for Catalog so lets follow the below steps<br />
+        Create Catalog.module.ts in the catalog folder and add below code<br />
+        import { NgModule } from '@angular/core';<br />
+        import { CatalogComponent } from './catalog.component';<br />
+        import { SharedModule } from '../shared/shared.module';<br />
+        import { CatalogRepositoryService } from './catalog-repository.service';<br />
+        import { RouterModule } from '@angular/router';<br />
+        @NgModule({<br />
+        imports: [ RouterModule, SharedModule],<br />
+        exports: [ ],<br />
+        declarations : [CatalogComponent ],<br />
+        providers :[ CatalogRepositoryService ]<br />
+        })<br />
+        export class CatalogModule{<br />
+        }<br />
+        Update App.Module with below code. The module will look more cleaner and all other modules which we created
+        looks encapsulated. It should finally look like below : <br />
+        import { NgModule } from '@angular/core';<br />
+        import { BrowserModule } from '@angular/platform-browser';<br />
+        import { RouterModule } from '@angular/router';<br />
+        import { HttpModule } from '@angular/http'<br />
+        import { ReactiveFormsModule, FormsModule } from '@angular/forms'<br />
+        import { appRoutes } from './routes'<br />
+        import { AppComponent } from './app.component';<br />
+        import { RegisterComponent } from "./users/register.component";<br />
+        import { SignInComponent } from "./users/sign-in.component";<br />
+        import { CoreModule } from "./core/core.module";<br />
+        import { SharedModule } from "./shared/shared.module"<br />
+        import { CatalogModule } from "./catalog/catalog.module"<br />
+        @NgModule({<br />
+        imports: [<br />
+        BrowserModule,<br />
+        HttpModule,<br />
+        FormsModule,<br />
+        ReactiveFormsModule,<br />
+        CoreModule,<br />
+        SharedModule,<br />
+        CatalogModule,<br />
+        RouterModule.forRoot(appRoutes)<br />
+        ],<br />
+        declarations: [<br />
+        AppComponent,<br />
+        RegisterComponent,<br />
+        SignInComponent<br />
+        ],<br />
+        providers: [ ],<br />
+        bootstrap: [ AppComponent ]<br />
+        })<br />
+        export class AppModule { }<br /><br />
+        We Will create the Feature module for User tab also but we wil cover it next slide while explaining lazy
+        loading.<br />
+    </aside>
+</section>
+
+<section>
+    <h2>Angular Component Best Practices</h2>
+    <ul>
+        <li>Prefixing Component Selectors.
+            <ul>
+                <li>Add Prefix to Selectors in specific feature areas. It Avoid conflicts.</li>
+                <li>It should be two to four characters long</li>
+                <li>See usage like selector: 'wb-nav-bar‘ in nav-bar.comoponent.ts in Current application example</li>
+            </ul>
+            <pre><code class="hljs" data-trim contenteditable>
+                    selector: 'wb-nav-bar',</code>
+            </pre>
+        </li>
+    </ul>
+</section>
+<section>
+    <h2>Angular Component Best Practices Continued...</h2>
+    <ul>
+        <li>Separating Component, CSS and template files.
+            <ul>
+                <li>Angular Style guide suggests that if template or css are more than 3 line Separate them</li>
+                <li>It should follow LI principle from LIFT</li>
+            </ul>
+        </li>
+        <li>Decorating Input and Output Properties
+            <ul>
+                <li>There are two ways to declare them. Using Decorators and using metadata</li>
+            </ul>
+        </li>
+        <li>Delegating complex logic to srvices
+            <ul>
+                <li>Component should work on single responsibility principle.</li>
+            </ul>
+        </li>
+
+    </ul>
+</section>
+
+<section>
+    <h2>Angular Component Best Practices Continued...</h2>
+    <ul>
+        <li>Component Member sequence
+            <ul>
+                <li>Public properties and methods should be written above all private components ( as per style guide)</li>
+            </ul>
+        </li>
+        <li>Implement Life Cycle Hook Interfaces.
+            <ul>
+                <li>Follow a similar order of Life Cycle Hooks across the application</li>
+            </ul>
+        </li>
+        <li>When to (and not to) create components.
+            <ul>
+                <li>Decision about creating reusable component using content projection</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+
+<section>
+    <h2>Angular Services Best Practices</h2>
+    <ul>
+        <li>Marking Services as Injectable
+            <ul>
+                <li>Injectable decorator is needed whenever a service injects another service</li>
+                <li>Recommendation is to add Injectable as we never know when we want to inject dependency in a
+                    service. Check Example of user-repository.service.ts</li>
+            </ul>
+        </li>
+        <li>Using Service for Data Retrieval
+            <ul>
+                <li>Use Service to get Data instead of getting data directly from component.</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+
+<section>
+    <h2>Service Injector best practices.</h2>
+    <img class="fragment" src="/images/ServiceInjectorBestPractices.png" height="500" width="1500">
+    <aside class="notes">
+        Take a look at Core Module Provider in the application and lets try to understand the injector.<br /><br />
+
+        Angular creates a root injector for every angular app. The root injector is responsible to inject services
+        wherever they are needed.<br />
+        Imagine an eager Feature module needs a service .Angular actually registers that using root injector. This
+        makes it available to the entire app. <br /><br />
+
+        But here is a catch developers miss. If we provide a service in a lazily loaded module. Angular creates a new
+        injector for that module and registers its there.<br />
+        This instance of the service is now only available to the lazily loaded module. This is true even both the
+        services are same ( in app module and Lazy Feature module) <br />
+        For example in the current application if we provide the user-repository service in Eagerly loaded feature
+        module and Lazily loaded module, angular will create separate instances for the service. <br />
+        And in case of our user-repository service it will be really bad as it is supposed to keep track of currently
+        logged in user. And if we have two instances this will be out of sync. And that’s why we create core module.<br /><br />
+
+        Service in core module is injected in root module becomes singleton service which is reusable across all
+        modules<br />
+
+        Now you might be wondering why not keep all services in Core Services . Remember that the services that are
+        only needed for Eager Feature Module should be registered in the module where its being used and only the
+        service which is used by all modules should be part of feature module.<br />
+        It gives a nice sense to organization to your project. <br />
+
+    </aside>
+</section>
+
+<section>
+    <h2>Angular Performance Best Practices</h2>
+    <ul>
+        <li>Ahead of time compiler and the CLI
+            <ul>
+                <li>Use the Angular CLI</li>
+                <li>Compile before deploying ( use webpack CLI commands properly)
+                    <ul>
+                        <li>Like use command npm run build -- -- prod.</li>
+                        <li>This creates the dist folder which will be deployed.</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Lazy Loading feature Modules
+            <ul>
+                <li>Take the example of User folder in current application</li>
+            </ul>
+        </li>
+    </ul>
+    <aside class="notes">
+        Excersise<br />
+        Create UserModule in User folder and Create lazily loaded module. Refer to Final Application<br /><br />
+
+        Monitoring bundle size exercise<br />
+        Run Application using npm run start-dev and observe files ( specially vendor bundle)<br />
+        Now install the tool source-map-explorer using below command<br />
+        npm install -g source-map-explorer<br />
+        Now Run application again using coonad <br />
+        npm run build –sourcemaps = true <br />
+        Change directory to dist folder now and list all items using ls command. All the bundles will be source mapped.<br />
+        Open the bundle using Spourcemapper . Use command from below<br />
+        Source-map-explorer vendor.bundle.js. <br />
+        The file should be open in IE with source map<br />
+        Now Observe the RXJS Section<br />
+        So there is a problem in code now: We accidently imported RXJS for more then what we needed in the application.<br />
+        Go to Module and make changes now by commenting uncommenting code<br />
+        Now build the application again <br />
+        npm run build –sourcemaps = true <br />
+        Open the bundle using Spourcemapper . Use command from below<br />
+        Source-map-explorer vendor.bundle.js. <br />
+        The file should be open in IE with source map. Observe RX.js file now. <br />
+    </aside>
+</section>
+
+<section>
+    <h2>Angular Performance Best Practices continued...</h2>
+    <ul>
+        <li>Monitoring bundle sizes
+            <ul>
+                <li>Observe the vendor bundle size in application</li>
+                <li>We can monitor bundle size using various tools like source-map-explorer</li>
+            </ul>
+        </li>
+        <li>Pure and Impure Pipe performance
+            <ul>
+                <li>Pipes are pure by default so they don’t understand mutations</li>
+                <li>Never use impure pipes for sorting</li>
+                <li>Use mutations appropriately with pure pipes while filtering on UI.</li>
+            </ul>
+        </li>
+    </ul>
+    <aside class="notes">
+        Excersise<br />
+        Create UserModule in User folder and Create lazily loaded module. Refer to Final Application<br /><br />
+
+        Monitoring bundle size exercise<br />
+        Run Application using npm run start-dev and observe files ( specially vendor bundle)<br />
+        Now install the tool source-map-explorer using below command<br />
+        npm install -g source-map-explorer<br />
+        Now Run application again using coonad <br />
+        npm run build –sourcemaps = true <br />
+        Change directory to dist folder now and list all items using ls command. All the bundles will be source mapped.<br />
+        Open the bundle using Spourcemapper . Use command from below<br />
+        Source-map-explorer vendor.bundle.js. <br />
+        The file should be open in IE with source map<br />
+        Now Observe the RXJS Section<br />
+        So there is a problem in code now: We accidently imported RXJS for more then what we needed in the application.<br />
+        Go to Module and make changes now by commenting uncommenting code<br />
+        Now build the application again <br />
+        npm run build –sourcemaps = true <br />
+        Open the bundle using Spourcemapper . Use command from below<br />
+        Source-map-explorer vendor.bundle.js. <br />
+        The file should be open in IE with source map. Observe RX.js file now. <br />
+    </aside>
+</section>
+
+<section data-background-transition="zoom" data-transition="slide">
+    <img class="fragment" src="/images/QuestionsSlide.png" height="600" width="1200">
+    <aside class="notes">
+    </aside>
+</section>
