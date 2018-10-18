@@ -1,0 +1,242 @@
+<section id="angular">
+    <h2>What is Angular?</h2>
+    <ul>
+        <li class="fragment">Developed by Google</li>
+        <li class="fragment">An open source JavaScript based framework for building client applications in HTML</li>
+        <li class="fragment">Javascript or Typescript can be used </li>
+        <li class="fragment">Composes HTML Templates and Angularized markup</li>
+        <li class="fragment">Empowers developers to build applications that live on the web, mobile, or the desktop</li>
+    </ul>
+</section>
+<section id="fragments" data-background-transition="zoom" data-transition="slide" data-background="#4d7e65">
+    <h2>Introduction of Typescript</h2>
+    <ul>
+        <li class="fragment">Superset of JavaScript (ES6) – but can compile till ES3</li>
+        <li class="fragment">Productive in writing JS application</li>
+        <li class="fragment">Implement the OOPS Concept</li>
+        <li class="fragment">A Java or C# developer can easily code in Angular. You don’t have to be a JavaScript
+            developer.</li>
+        <li class="fragment">Lambda operators, iterators or reflection’s mechanism is available</li>
+        <li class="fragment">Optional Types and Arrow Functions are available </li>
+    </ul>
+</section>
+<section id="fragments" data-background-transition="zoom" data-transition="slide" data-background="#4d7e65">
+    <h2>Angular Architecture</h2>
+    <img class="fragment" src="/images/AngularArchitecture.png" height="480" width="1600">
+</section>
+<section data-background-transition="zoom" data-transition="slide" data-background="#4d7e65">
+    <section>
+        <h2>Core Concepts (Modules)</h2>
+        <ul>
+            <li>Modules – Angular apps are modular and Angular has its own modularity system called NgModules.</li>
+            <li>NgModule – Decorator that takes the single metadata object</li>
+        </ul>
+        <pre><code class="hljs" data-trim contenteditable>
+            import { NgModule }      from '@angular/core';
+            import { BrowserModule } from '@angular/platform-browser';
+            @NgModule({
+                imports:      [ BrowserModule ], 
+                providers:    [ Logger ],
+                declarations: [ AppComponent ],
+                exports:      [ AppComponent ],
+                bootstrap:    [ AppComponent ]
+            })export class AppModule { }
+        </code>
+    </pre>
+        <aside class="notes">
+            Module Component: - <br />
+            Angular apps are modular and Angular has its own modularity system called NgModules. NgModules help
+            organize an application into cohesive blocks of functionality. It takes a metadata object that tells
+            Angular how to compile and your code. It identifies the module's own components, directives, and pipes,
+            making some of them public so external components can use them <br />
+            Every Angular app has at least one NgModule class, the root module, conventionally named AppModule.<br />
+            While the root module may be the only module in a small application, most apps have many more feature
+            modules, each a cohesive block of code dedicated to an application domain, a workflow, or a closely related
+            set of capabilities.<br />
+        </aside>
+    </section>
+    <section>
+        <h2>Core Concepts (Angular libraries)</h2>
+        <ul>
+            <li>Library Modules - Angular ships as a collection of JavaScript modules.</li>
+            <li>Each Angular library name begins with the @angular prefix.</li>
+            <li>For example</li>
+        </ul>
+        <pre>
+        <code class="hljs" data-trim contenteditable>
+            // angular component decorator
+            import { Component } from '@angular/core'; 
+            import { BrowserModule } from '@angular/platform-browser';
+        </code>
+    </pre>
+    </section>
+    <section>
+        <h2>Core Concepts(Components)</h2>
+        <ul>
+            <li>Most basic building block</li>
+            <li>An Angular application is a tree of Angular components.</li>
+            <li>Must belong to NgModule</li>
+            <li>Metadata configuration specified via the Component decorator</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Core Concepts(Components Continued...)</h2>
+        <ul>
+            <li>Angular creates, updates, and destroys components as the user moves through the application with use of
+                various lifecycle hooks.</li>
+            <img class="fragment" src="/images/AngularComponents.png" height="280" width="1200">
+        </ul>
+        <aside class="notes">
+            Unlike directives, components always have a template and only one component can be instantiated per an
+            element in a template.<br />
+        </aside>
+    </section>
+    <section>
+        <h2>Core Concepts(Metadata)</h2>
+        <ul>
+            <li>Metadata tells Angular how to process a class.</li>
+            <li>Decorates a class so that it can configure the expected behavior of the class</li>
+            <li>Template, metadata, and component together describe a view</li>
+            <li>Metadata decorators: selector, templateUrl, providers, @input, @output, @injectable</li>
+        </ul>
+        <pre>
+    <code class="hljs" data-trim contenteditable>
+        @Component({
+            selector: 'app-my-first',
+            templateUrl: './my-first-app.component.html', 
+            providers: [ MyFirstService ] 
+            }) 
+        export class MyFirstAppComponent implements OnInit { /*  */ } 
+    </code>
+</pre>
+        <aside class="notes">
+            Unlike directives, components always have a template and only one component can be instantiated per an
+            element in a template.Metadata Properties:<br />
+            Metadata Properties:<br />
+            animations - list of animations of this component<br />
+            changeDetection - change detection strategy used by this component<br />
+            encapsulation - style encapsulation strategy used by this component<br />
+            entryComponents - list of components that are dynamically inserted into the view of this component<br />
+            exportAs - name under which the component instance is exported in a template<br />
+            host - map of class property to host element bindings for events, properties and attributes<br />
+            inputs - list of class property names to data-bind as component inputs<br />
+            interpolation - custom interpolation markers used in this component's template<br />
+            moduleId - ES/CommonJS module id of the file in which this component is defined<br />
+            outputs - list of class property names that expose output events that others can subscribe to<br />
+            providers - list of providers available to this component and its children<br />
+            queries - configure queries that can be injected into the component<br />
+            selector - css selector that identifies this component in a template<br />
+            styleUrls - list of urls to stylesheets to be applied to this component's view<br />
+            styles - inline-defined styles to be applied to this component's view<br />
+            template - inline-defined template for the view<br />
+            templateUrl - url to an external file containing a template for the view<br />
+            viewProviders - list of providers available to this component and its view children<br />
+        </aside>
+
+    </section>
+    <section>
+        <h2>Core Concepts(Data binding)</h2>
+        <ul>
+            <li>A mechanism for coordinating parts of a template with parts of a component</li>
+            <li>Binding Markup added to the template HTML.</li>
+            <li>Four forms of Databinding syntax</li>
+            <img class="fragment" src="/images/AngularDataBinding.png" height="240" width="1200">
+        </ul>
+        <aside class="notes">
+            Without a framework, you would be responsible for pushing data values into the HTML controls and turning
+            user responses into actions and value updates. Writing such push/pull logic by hand is tedious,
+            error-prone, and a nightmare to read as any experienced jQuery programmer can attest. <br /><br />
+            Add binding markup to the template HTML to tell Angular how to connect both sides.<br /><br />
+            Data binding plays an important role in communication between a template and its component. Data binding is
+            also important for communication between parent and child components.
+        </aside>
+    </section>
+    <section>
+        <h2>Core Concepts(Directives)</h2>
+        <ul>
+            <li>Angular templates are dynamic. Angular renders templates, it transforms the DOM according to the
+                instructions given by directives.</li>
+            <li>A directive is a class with a @Directive decorator. A component is a directive-with-a-template.</li>
+        </ul>
+        <pre>
+        <code class="hljs" data-trim contenteditable>
+            structural directives
+            <li *ngFor="let hero of heroes"></li> 
+            <app-hero-detail *ngIf="selectedHero"></app-hero-detail>
+            Attribute directives alter the appearance or behavior 
+            of an existing element. 
+            <input [(ngModel)]="hero.name">
+        </code>
+    </pre>
+        <aside class="notes">
+            @Component decorator is actually a @Directive decorator extended with template-oriented features.<br />
+            ngSwitch, ngStyle, ngClass are some additional directive types.<br />
+            While a component is technically a directive, components are so distinctive and central to Angular
+            applications that this architectural overview separates components from directives.<br />
+            In templates they look like regular HTML attributes, hence the name.<br />
+        </aside>
+    </section>
+    <section>
+        <h2>Core Concepts(Services)</h2>
+        <ul>
+            <li>Broad Category - Includes any value, function or feature which the Angular application needs</li>
+            <li>It is typically a class with a narrow, well-defined purpose.</li>
+            <li>Examples include:
+                <ul>
+                    <li>logging service</li>
+                    <li>data service</li>
+                    <li>message bus</li>
+                    <li>tax calculator</li>
+                    <li>application configuration</li>
+                    <li>Anything else</li>
+                </ul>
+            </li>
+        </ul>
+        <aside class="notes">
+            Angular has no definition of a service. There is no service base class, and no place to register a service.<br />
+            Component classes should be lean. They don't fetch data from the server, validate user input, or log
+            directly to the console. They delegate such tasks to services.<br />
+            A component's job is to enable the user experience and nothing more. <br />
+            It mediates between the view (rendered by the template) and the application logic (which often includes
+            some notion of a model). <br />
+            A good component presents properties and methods for data binding. It delegates everything nontrivial to
+            services.<br />
+
+        </aside>
+    </section>
+    <section>
+        <h2>Core Concepts(Dependency Injection)</h2>
+        <ul>
+            <li>It’s a way to supply a new instance of a class with the fully-formed dependencies it requires.</li>
+            <li>Angular uses dependency injection to provide new components with the services they need.</li>
+        </ul>
+        <img class="fragment" src="/images/DependencyInjection.png" height="260" width="800">
+        <aside class="notes">
+            Most dependencies are services<br />
+            When Angular creates a component, it first asks an injector for the services that the component requires.<br />
+            An injector maintains a container of service instances that it has previously created. If a requested
+            service instance is not in the container, the injector makes one and adds it to the container before
+            returning the service to Angular.<br />
+            When all requested services have been resolved and returned, Angular can call the component's constructor
+            with those services as arguments. This is dependency injection.<br />
+            Points to remember about dependency injection:<br />
+            Dependency injection is wired into the Angular framework and used everywhere.<br />
+            The injector is the main mechanism.<br />
+            An injector maintains a container of service instances that it created.<br />
+            An injector can create a new service instance from a provider.<br />
+            A provider is a recipe for creating a service.<br />
+            Register providers with injectors.<br />
+        </aside>
+    </section>
+</section>
+<section id="fragments" data-background-transition="zoom" data-transition="slide" data-background="#4d7e65">
+    <h2>References</h2>
+    <ul>
+        <span>Official:<a href="https://angular.io/docs" target="_blank"> https://angular.io/docs</a></span><br />
+        <span>Pluralsight:<a href="https://www.pluralsight.com/paths/angular" target="_blank">https://www.pluralsight.com/paths/angular</a></span><br />
+        <span>YouTube channel:<a href="https://www.youtube.com/watch?v=KhzGSHNhnbI" target="_blank">https://www.youtube.com/watch?v=KhzGSHNhnbI</a></span><br />
+        <a href="https://medium.com/@angularminds/comparison-between-angular-1-vs-angular-2-vs-angular-4-62fe79c379e3"
+            target="_blank">https://medium.com/@angularminds/comparison-between-angular-1-vs-angular-2-vs-angular-4-62fe79c379e3</a>
+        <a href="https://www.edureka.co/blog/angular-tutorial/" target="_blank">https://www.edureka.co/blog/angular-tutorial/</a>
+    </ul>
+</section>

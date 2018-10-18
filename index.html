@@ -1,129 +1,95 @@
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<html lang="en">
 
-		<title>reveal.js</title>
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+	<title>MEAN Stack Tutorial</title>
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-					<h1>Introduction to Angular</h1>
-					<p>
-						<small>Created by <a >Ajith Kumar, </a> <a >Bipul Kumar</a>  and <a> Pratik Prasad</a></small>
-					</p>
-				</section>
-				<section id="fragments">
-					<h2>What is Angular?</h2>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/league.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section id="first">
+				<h1>Introduction to MEAN Stack programming</h1>
+				<p>
+					<small>Created by <a>Ajith Kumar, </a> <a>Bipul Kumar</a> and <a> Pratik Prasad</a></small>
+				</p>
+			</section>	
+			<section id="second">
+					<h2>MEAN Stack Programming</h2>
 					<ul>
-						<li class="fragment">Developed by Google</li>
-						<li class="fragment">An open source JavaScript based framework for building client applications in HTML</li>
-						<li class="fragment">Javascript or Typescript can be used </li>
-						<li class="fragment">Composes HTML Templates and Angularized markup</li>
-						<li class="fragment">Empowers developers to build applications that live on the web, mobile, or the desktop</li>
+						<li class="fragment">M - MongoDB</li>
+						<li class="fragment">E - ExpressJS</li>
+						<li class="fragment">
+							<a href="#/angular" class="navigate-down">A - Angular</a>
+						</li>
+						<li class="fragment">N - NodeJS</li>					
 					</ul>
-				</section>
-				<section id="fragments" data-background-transition="zoom"  data-transition="slide" data-background="#4d7e65">					
-					<h2>Introduction of Typescript</h2>
-				<ul>
-					<li class="fragment">Superset of JavaScript (ES6) – but can compile till ES3</li>
-					<li class="fragment">Productive in writing JS application</li>
-					<li class="fragment">Implement the OOPS Concept</li>
-					<li class="fragment">A Java or C# developer can easily code in Angular. You don’t have to be a JavaScript developer.</li>
-					<li class="fragment">Lambda operators, iterators or reflection’s mechanism is available</li>
-					<li class="fragment">Optional Types and Arrow Functions are available </li>
-				</ul>
-				</section>
-			   <section id="fragments" data-background-transition="zoom"  data-transition="slide" data-background="#4d7e65">	
-						<h2>Angular Architecture</h2>
-						<img class="fragment" src="/images/AngularArchitecture.png"  height="480" width="1600">
-				</section>
-				<section>
-						<section>
-								<h2>Core Concepts ( Modules)</h2>
-								<ul>
-										<li >Modules – Angular apps are modular and Angular has its own modularity system called NgModules.</li>
-										<li >NgModule – Decorator that takes the single metadata object</li>
-								</ul>
-								<pre><code class="hljs" data-trim contenteditable>
-										import { NgModule }      from '@angular/core';
-										import { BrowserModule } from '@angular/platform-browser';
-										@NgModule({
-										  imports:      [ BrowserModule ], 
-										  providers:    [ Logger ],
-										  declarations: [ AppComponent ],
-										  exports:      [ AppComponent ],
-										  bootstrap:    [ AppComponent ]
-										})export class AppModule { }
-									</code></pre>
-									<a href="#" class="navigate-down">
-											<img width="45" height="50" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-										</a>
-						</section>
-						<section>
-								<h2>Core Concepts (Angular libraries)</h2>
-								<ul>
-										<li >Library Modules - Angular ships as a collection of JavaScript modules.</li>
-										<li >Each Angular library name begins with the @angular prefix.</li>
-										<li >For example</li>
-								</ul>
-								<pre><code class="hljs" data-trim contenteditable>
-										// angular component decorator
-										import { Component } from '@angular/core'; 
-										import { BrowserModule } from '@angular/platform-browser';
-									</code></pre>
-									<a href="#" class="navigate-down">
-											<img width="45" height="50" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-										</a>
-						</section>
-						<section>
-								<h2>Core Concepts(Components)</h2>
-								<ul>
-										<li >Most basic building block</li>
-										<li >An Angular application is a tree of Angular components.</li>
-										<li >Must belong to NgModule</li>
-										<li >Metadata configuration specified via the Component decorator</li>
-										<li >Angular creates, updates, and destroys components as the user moves through the application with use of various lifecycle hooks.</li>
-								</ul>
-						</section>
-				</section>
-			</div>
+					
+				</section>				
+			<div id="third" class="slides" data-external="slides/angularSlide.html"></div>
 		</div>
+	</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+			dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+					{
+						src: 'plugin/external/external.js',
+						condition: function () {
+							return !!document.querySelector('[data-external],[data-external-replace]');
+						}
+					}
+			]
+		});
+	</script>
+</body>
+
 </html>
