@@ -1,47 +1,143 @@
 <section>
-        <h2>Traditional Relational Database</h2>
-            <img class="fragment" src="/images/MongoDB_TraditionalRelationalDatabase.png" height="450" width="1200">
-        <aside class="notes">          
-        </aside>
-</section>
-<section>
-        <h2>Mongo DB - No SQL DB</h2>
-        <img class="fragment" src="/images/MongoDB_FileAnything.png" height="550" width="1200">        
-        <aside class="notes">
-              Mongo Db is an open source software whihc can be downloaded from mongoDB.org. It is written in C++ 
-            </aside>
-</section>
-<section>
-        <h2>Philosophy</h2>
-        <img class="fragment" src="/images/MongoDBPhilosophy.png" height="400" width="1200">              
+    <h2>MongoDB - The leading No SQL DB</h2>
+    <img class="fragment" src="/images/MongoDB_FileAnything.png" height="550" width="1200">
+    <aside class="notes">
+        Mongo Db is an open source software which can be downloaded from mongoDB.org. It is written in C++
+    </aside>
 </section>
 
-<section >
-        <h2>Mongo DB Features</h2>
-        <ul>
-            <li class="fragment">Standard DB Indexing</li>
-            <li class="fragment">Documents are stored in BSON( binary JSON)</li>
-            <li class="fragment">Any Valid JSON can be easily imported and queried</li>
-            <li class="fragment">Schema-less, very flexible - no more blocking ALTER table </li>
-            <li class="fragment">Makes for easy Horizontal Scaling</li>
-            <li class="fragment">Map\Reduce, Very Fast, Super easy to install</li>
-            <li class="fragment">Document Oriented - flexible</li>
-        </ul>
-        <aside class="notes">
-            It is fast, scalable database that is suitable for many applications. It has tunable consistency, no tables and no schema to worry about and no impedence mismatch
-            BSON is binary serizlization of JSON like objects. <br/>
-            This is extremely powerful which means mongo understands JSON natively 
-        </aside>
+<section>
+    <h2>The Database Landscape - Philosophy</h2>
+    <ul>
+        <li>
+            Mongo tries to achieve the performance of traditional key-value stores while maintaining functionality of
+            traditional RDBMS
+        </li>
+    </ul>
+    <img class="fragment" src="/images/MongoDB_DatabaseLandscape.png" height="350" width="600">
+    <aside class="notes">
+    </aside>
 </section>
-<section >
-        <h2>Benefits of using Mongo DB</h2>
-        <ul>
-            <li class="fragment">Fast</li>
-            <li class="fragment">Scalable</li>
-            <li class="fragment">Tunable consistency</li>
-            <li class="fragment">No tables</li>
-            <li class="fragment">No Schema</li>
-        </ul>
-        <aside class="notes">
-            </aside>
+<section>
+    <h2>SqlDB comparison to MongoDB</h2>
+    <img class="fragment" src="/images/MongoDBVsSQLDBComparision.png" height="450" width="1200">
+    <aside class="notes">
+    </aside>
+</section>
+
+<section>
+    <h2>Mongo DB Features</h2>
+    <ul>
+        <li class="fragment">Standard DB Indexing</li>
+        <li class="fragment">Documents are stored in BSON( binary JSON)</li>
+        <li class="fragment">Any Valid JSON can be easily imported and queried</li>
+        <li class="fragment">Schema-less, very flexible - no more blocking ALTER table </li>
+        <li class="fragment">Makes for easy Horizontal Scaling</li>
+        <li class="fragment">Map\Reduce, Very Fast, Super easy to install</li>
+        <li class="fragment">Document Oriented - flexible</li>
+        <li class="fragment">Efficient binary large objects via GridFS - stores images, videos, anything</li>
+    </ul>
+    <aside class="notes">
+        It is fast, scalable database that is suitable for many applications. It has tunable consistency, no tables and
+        no schema to worry about and no impedence mismatch
+        BSON is binary serizlization of JSON like objects. <br />
+        This is extremely powerful which means mongo understands JSON natively
+    </aside>
+</section>
+<section>
+    <h2>Mongo DB Features: Querying</h2>
+    <img class="fragment" src="/images/MongoDBFeatureQuerying.png" height="400" width="1200">
+</section>
+
+<section>
+    <h2>Concepts - Document Oriented</h2>
+    <ul>
+        <li class="fragment">Think of Documents as database records</li>
+        <li class="fragment">Documents are basically just JSON objects that Mongo Stores in binary</li>
+        <li class="fragment">Think of collections of database tables</li>
+    </ul>
+    <img class="fragment" src="/images/MongoDB_ConceptMapping.png" height="350" width="600">
+    <aside class="notes">
+        We have a question what are cursors jow lets look at cursors
+    </aside>
+</section>
+<section data-background-transition="zoom" data-transition="slide">
+    <h2>Concepts - Cursors</h2>
+    <ul>
+        <li class="fragment">Queries in MongoDB returns cursors instead of collections</li>
+        <li class="fragment">A cursor allows us to iterate through the result set</li>
+        <li class="fragment">A big reason for this is performance</li>
+        <li class="fragment">Much more efficient then loading all objects in memory</li>
+        <li class="fragment">The find() function will return the cursor obhject</li>
+        <li class="fragment">
+            <pre><code class="hljs" data-trim contenteditable>
+                            var cursor = db.logged_requests.find({'status_code' : 200})
+                            cursor.hasNext() // true
+                            cursor.forEach(
+                                function(item){
+                                    print(tojson(item))
+                                }
+                            );
+                            cursor.hasNext() // false              
+                        </code>
+                    </pre>
+        </li>
+    </ul>
+    <aside class="notes">
+    </aside>
+</section>
+
+<section data-background-transition="zoom" data-transition="slide">
+    <h2>Some Cool Features</h2>
+    <img class="fragment" src="/images/MongoDB_CoolFeatures.png" height="400" width="1200">
+    <aside class="notes">
+    </aside>
+</section>
+<section data-background-transition="zoom" data-transition="slide">
+    <h2>Some Cool Uses</h2>
+    <img class="fragment" src="/images/MongoDB_CoolUses.png" height="400" width="1200">
+    <aside class="notes">
+    </aside>
+</section>
+
+<section data-background-transition="zoom" data-transition="slide">
+    <h2>Common use Cases for MongoDB</h2>
+    <ul>
+        <li class="fragment">Single View</li>
+        <li class="fragment">Internet of things</li>
+        <li class="fragment">Mobile</li>
+        <li class="fragment">Real-Time Analytics</li>
+        <li class="fragment">Personalization</li>
+        <li class="fragment">Catalog</li>
+        <li class="fragment">Content management</li>
+    </ul>
+    <aside class="notes">
+    </aside>
+</section>
+
+<section data-background-transition="zoom" data-transition="slide">
+    <h2>Limitations</h2>
+    <ul>
+        <li class="fragment">Transaction Support</li>
+        <li class="fragment">relational Integrity</li>
+    </ul>
+    <aside class="notes">
+    </aside>
+</section>
+
+<section data-background-transition="zoom" data-transition="slide">
+    <img class="fragment" src="/images/QuestionsSlide.png" height="600" width="1200">
+    <aside class="notes">
+    </aside>
+</section>
+<section id="fragments" data-background-transition="zoom" data-transition="slide" data-background="#4d7e65">
+    <h2>References</h2>
+    <ul>
+        <span>Official:<a href="https://www.mongodb.com/" target="_blank">https://www.mongodb.com/</a></span><br />
+        <span>Tutorial: <a href="https://docs.mongodb.com/manual/tutorial/" target="_blank">https://docs.mongodb.com/manual/tutorial/</a></span><br />
+        <span>Pluralsight:<a href="https://app.pluralsight.com/library/courses/mongodb-introduction/table-of-contents"
+                target="_blank">https://app.pluralsight.com/library/courses/mongodb-introduction/table-of-contents</a></span>
+        <span><a href="https://www.w3resource.com/mongodb/introduction-mongodb.php" target="_blank">https://www.w3resource.com/mongodb/introduction-mongodb.php</a></span><br />
+
+    </ul>
 </section>
