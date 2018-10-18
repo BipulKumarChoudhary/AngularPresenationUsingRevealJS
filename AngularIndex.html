@@ -42,20 +42,43 @@
 				<p>
 					<small>Created by <a>Ajith Kumar, </a> <a>Bipul Kumar</a> and <a> Pratik Prasad</a></small>
 				</p>
-			</section>	
+			</section>
 			<section id="second">
-					<h2>MEAN Stack Programming</h2>
-					<ul>
-						<li class="fragment">M - MongoDB</li>
-						<li class="fragment">E - ExpressJS</li>
-						<li class="fragment">
-							<a href="#/angular" class="navigate-down">A - Angular</a>
-						</li>
-						<li class="fragment">N - NodeJS</li>					
-					</ul>
-					
-				</section>				
-			<div id="third" class="slides" data-external="slides/angularSlide.html"></div> 
+				<h2>MEAN Stack Programming</h2>
+				<ul>
+					<li class="fragment">M - MongoDB</li>
+					<li class="fragment">E - ExpressJS</li>
+					<li class="fragment">
+						<a href="#/angular" class="navigate-down">A - Angular</a>
+					</li>
+					<li class="fragment">N - NodeJS</li>
+				</ul>
+
+			</section>
+
+			<section data-background-transition="zoom" data-transition="slide">
+				<h2>Why do we care for MEAN\MERN ?</h2>
+				<img class="fragment" src="/images/WhyMeanStaCkDevelopment.png" height="400" width="1200">
+				<aside class="notes">
+				</aside>
+			</section>
+			<section data-background-transition="zoom" data-transition="slide">
+				<h2>The MEAN Stack Architecture </h2>
+				<img class="fragment" src="/images/MeanStackArchitecture.png" height="400" width="1200">
+				<aside class="notes">
+				</aside>
+			</section>
+			<section data-background-transition="zoom" data-transition="slide">
+				<img class="fragment" src="/images/NodeJsSlide.png" height="550" width="1200">
+				<aside class="notes">
+				</aside>
+			</section>
+			<section data-background-transition="zoom" data-transition="slide">
+					<img class="fragment" src="/images/ExpressJS.png" height="550" width="1200">
+					<aside class="notes">
+					</aside>
+				</section>
+			<div id="third" class="slides" data-external="slides/angularSlide.html"></div>
 		</div>
 	</div>
 
@@ -68,25 +91,25 @@
 		// - https://github.com/hakimel/reveal.js#dependencies
 		Reveal.initialize({
 			controls: true,
-				progress: true,
-				history: true,
-				center: true,
+			progress: true,
+			history: true,
+			center: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
 			dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/search/search.js', async: true },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{
-						src: 'plugin/external/external.js',
-						condition: function () {
-							return !!document.querySelector('[data-external],[data-external-replace]');
-						}
+				{ src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+				{ src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/search/search.js', async: true },
+				{ src: 'plugin/zoom-js/zoom.js', async: true },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{
+					src: 'plugin/external/external.js',
+					condition: function () {
+						return !!document.querySelector('[data-external],[data-external-replace]');
 					}
+				}
 			]
 		});
 	</script>
